@@ -1,4 +1,4 @@
-package jpaboo.jpashop.domain.item;
+package jpabook.jpashop.domain.item;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -8,9 +8,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@DiscriminatorValue("A")
-public class Album extends Item {
-    private String artist;
+@DiscriminatorValue("B")
+public class Book extends Item {
 
-    private String etc;
+   private String author;
+   private String isbn;
+
 }

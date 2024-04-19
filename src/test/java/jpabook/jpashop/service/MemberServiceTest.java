@@ -1,8 +1,8 @@
-package jpaboo.jpashop.service;
+package jpabook.jpashop.service;
 
 import jakarta.persistence.EntityManager;
-import jpaboo.jpashop.domain.Member;
-import jpaboo.jpashop.repository.MemberRepository;
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
