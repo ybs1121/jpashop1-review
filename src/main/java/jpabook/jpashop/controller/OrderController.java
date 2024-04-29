@@ -23,7 +23,7 @@ public class OrderController {
     private final ItemService itemService;
 
 
-    @GetMapping("/orders")
+    @GetMapping("/order")
     public String createOrder(Model model) {
         List<Member> members = memberService.findAll();
         List<Item> items = itemService.findItems();
