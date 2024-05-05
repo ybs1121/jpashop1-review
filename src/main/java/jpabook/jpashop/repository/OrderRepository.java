@@ -38,6 +38,7 @@ public class OrderRepository {
 
     /**
      * JPA Criteria
+     *
      * @param orderSearch
      * @return
      */
@@ -51,13 +52,13 @@ public class OrderRepository {
         List<Predicate> criteria = new ArrayList<Predicate>();
 
         // 주문 상태 검색
-        if(orderSearch.getOrderStatus() != null) {
+        if (orderSearch.getOrderStatus() != null) {
             Predicate status = cb.equal(o.get("status"), orderSearch.getOrderStatus());
             criteria.add(status);
         }
 
         //회원검색
-        if(orderSearch.getMemberName() != null) {
+        if (orderSearch.getMemberName() != null) {
             Predicate name = cb.like(member.get("name"), "%" + orderSearch.getMemberName() + "%");
             criteria.add(name);
         }
@@ -69,4 +70,15 @@ public class OrderRepository {
     }
 
 
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery("select o from Order o "
+                + "join fetch o.member m "
+                + "join fetch o.delivery d", Order.class).getResultList();
+    }
+
+    public List<SimpleOrderQueryDto> findOrderDtos() {
+        return em.createQuery("select new jpabook.jpashop.repository.SimpleOrderQueryDto(o.id, m.name,o.orderDate,o.status,d.address) from Order o "
+                + "join  o.member m "
+                + "join  o.delivery d", SimpleOrderQueryDto.class).getResultList();
+    }
 }
