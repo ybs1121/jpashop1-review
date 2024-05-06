@@ -24,6 +24,7 @@ public class SimpleOrderQueryDto {
         orderStatus = order.getStatus();
     }
 
+
     public SimpleOrderQueryDto(Long id, String name, LocalDateTime orderDate, OrderStatus orderStatus, Address address) {
         this.orderId = id;
         this.orderDate = orderDate;
