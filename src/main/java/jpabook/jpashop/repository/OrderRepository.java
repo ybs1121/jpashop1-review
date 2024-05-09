@@ -76,6 +76,15 @@ public class OrderRepository {
                 + "join fetch o.delivery d", Order.class).getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery("select o from Order o "
+                + "join fetch o.member m "
+                + "join fetch o.delivery d", Order.class)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
     public List<SimpleOrderQueryDto> findOrderDtos() {
         return em.createQuery("select new jpabook.jpashop.repository.SimpleOrderQueryDto(o.id, m.name,o.orderDate,o.status,d.address) from Order o "
                 + "join  o.member m "
