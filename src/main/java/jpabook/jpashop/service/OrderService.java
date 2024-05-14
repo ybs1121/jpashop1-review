@@ -27,6 +27,7 @@ public class OrderService {
 
     /**
      * 주문
+     *
      * @param memberId
      * @param itemId
      * @param count
@@ -59,7 +60,8 @@ public class OrderService {
 
     //검색
     public List<Order> findOrders(OrderSearch orderSearch) {
-        return orderRepository.findAllByCriteria(orderSearch);
+//        return orderRepository.findAllByCriteria(orderSearch);
+        return orderRepository.findAll(orderSearch);
     }
 
 
